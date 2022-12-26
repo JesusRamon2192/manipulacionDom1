@@ -15,6 +15,12 @@ const formatPrice = (price) => {
     }).format(price)
     return newPrice;
 };
+
+const functTest = (e) => {
+    if (e.target.nodeName === "H2"){
+    console.log(`Este es un aguacate de tipo: ${e.target.outerText}`)
+    }
+}
 //Internacionalizacion
 //1 - Formato fechas
 //2 - formato monedas
@@ -38,6 +44,7 @@ window.fetch(`${baseUrl}/api/avo`)
         const titulo = document.createElement("h2");
         titulo.textContent = item.name;
         titulo.className = "text-lg";
+        //titulo.addEventListener("click", functTest);
 
         //crear precio
         const price = document.createElement("div");
@@ -58,4 +65,5 @@ window.fetch(`${baseUrl}/api/avo`)
     });
     appNode.append(...todosLosItems);
     appNode.className = "mt-10 grid grid-cols-2 gap-2"
+    appNode.addEventListener("click", functTest);
 });
